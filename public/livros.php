@@ -21,18 +21,29 @@
 
         $conexao = RetornaConexao();
 
-        $titulo = 'titulo';
+        $nome = 'nome';
         $autor = 'autor';
+        $autor_alias = 'nome';
         $classificacao = 'classificacao';
+        $data_primeira_publicação = 'data_primeira_publicação';
+        $categoria = 'categoria';
+        $classificacao = 'classificacao';
+        $tipo_de_capa = 'tipo_de_capa';
+        $quantidade_paginas = 'quantidade_paginas';
         /*TODO-1: Adicione uma variavel para cada coluna */
 
 
         $sql =
-            'SELECT ' . $titulo .
-            '     , ' . $autor .
+            'SELECT livro.' . $nome .
+            '     , ' . $data_primeira_publicação .
+            '     , ' . $categoria .
             '     , ' . $classificacao .
+            '     , autor.' . $autor_alias . ' as autor' .
+            '     , ' . $tipo_de_capa .
+            '     , ' . $quantidade_paginas .
             /*TODO-2: Adicione cada variavel a consulta abaixo */
-            '  FROM livros';
+            '  FROM livro INNER JOIN autor ON autor.id = livro.autor;';
+       
 
 
         $resultado = mysqli_query($conexao, $sql);
@@ -41,14 +52,16 @@
         }
 
 
-
         $cabecalho =
             '<table>' .
             '    <tr>' .
-            '        <th>' . $titulo . '</th>' .
-            '        <th>' . $autor . '</th>' .
-            /* TODO-3: Adicione as variaveis ao cabeçalho da tabela */
+            '        <th>' . $nome . '</th>' .
+            '        <th>' . $data_primeira_publicação . '</th>' .
+            '        <th>' . $categoria . '</th>' .
             '        <th>' . $classificacao . '</th>' .
+            '        <th>' . $autor . '</th>' .
+            '        <th>' . $tipo_de_capa . '</th>' .
+            '        <th>' . $quantidade_paginas . '</th>' .
             '    </tr>';
 
         echo $cabecalho;
@@ -58,10 +71,13 @@
             while ($registro = mysqli_fetch_assoc($resultado)) {
                 echo '<tr>';
 
-                echo '<td>' . $registro[$titulo] . '</td>' .
+                echo '<td>' . $registro[$nome] . '</td>' .
+                    '<td>' . $registro[$data_primeira_publicação] . '</td>' .
+                    '<td>' . $registro[$categoria] . '</td>' .
+                    '<td>' . $registro[$classificacao] . '</td>' .
                     '<td>' . $registro[$autor] . '</td>' .
-                    /* TODO-4: Adicione a tabela os novos registros. */
-                    '<td>' . $registro[$classificacao] . '</td>';
+                    '<td>' . $registro[$tipo_de_capa] . '</td>' .
+                    '<td>' . $registro[$quantidade_paginas] . '</td>';
                 echo '</tr>';
             }
             echo '</table>';
