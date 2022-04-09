@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 
 <head>
-    <style>
-        .content {
-            max-width: 500px;
-            margin: auto;
-        }
-    </style>
 </head>
 
 <html>
 
 <body>
-    <div class="content">
+    <div>
         <h1>Bibliófilo's</h1>
 
         <h2>Livros</h2>
@@ -24,7 +18,6 @@
         $nome = 'nome';
         $autor = 'autor';
         $autor_alias = 'nome';
-        $classificacao = 'classificacao';
         $data_primeira_publicação = 'data_primeira_publicação';
         $categoria = 'categoria';
         $classificacao = 'classificacao';
@@ -37,12 +30,11 @@
             'SELECT livro.' . $nome .
             '     , ' . $data_primeira_publicação .
             '     , ' . $categoria .
-            '     , ' . $classificacao .
             '     , autor.' . $autor_alias . ' as autor' .
             '     , ' . $tipo_de_capa .
             '     , ' . $quantidade_paginas .
             /*TODO-2: Adicione cada variavel a consulta abaixo */
-            '  FROM livro INNER JOIN autor ON autor.id = livro.autor;';
+            '  FROM livro INNER JOIN autor ON autor.autor_id = livro.autor;';
        
 
 
@@ -53,12 +45,11 @@
 
 
         $cabecalho =
-            '<table>' .
-            '    <tr>' .
+        '<table style="width: 100%">' .
+        '    <tr align="left">' .
             '        <th>' . $nome . '</th>' .
             '        <th>' . $data_primeira_publicação . '</th>' .
             '        <th>' . $categoria . '</th>' .
-            '        <th>' . $classificacao . '</th>' .
             '        <th>' . $autor . '</th>' .
             '        <th>' . $tipo_de_capa . '</th>' .
             '        <th>' . $quantidade_paginas . '</th>' .
@@ -74,7 +65,6 @@
                 echo '<td>' . $registro[$nome] . '</td>' .
                     '<td>' . $registro[$data_primeira_publicação] . '</td>' .
                     '<td>' . $registro[$categoria] . '</td>' .
-                    '<td>' . $registro[$classificacao] . '</td>' .
                     '<td>' . $registro[$autor] . '</td>' .
                     '<td>' . $registro[$tipo_de_capa] . '</td>' .
                     '<td>' . $registro[$quantidade_paginas] . '</td>';
