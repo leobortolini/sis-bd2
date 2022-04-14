@@ -25,8 +25,8 @@
 
         $sql = 'SELECT leitor.nome leitor_nome, livro.nome livro_nome, inicio_leitura, fim_leitura, classificacao 
         FROM leitura 
-            INNER JOIN leitor ON leitor.leitor_id  = leitura.leitor
-            INNER JOIN livro ON livro.livro_id = leitura.livro;';
+            INNER JOIN leitor ON leitor.leitor_id  = leitura.leitor_id
+            INNER JOIN livro ON livro.livro_id = leitura.livro_id;';
        
 
 

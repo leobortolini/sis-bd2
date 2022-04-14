@@ -34,7 +34,7 @@
             '     , ' . $tipo_de_capa .
             '     , ' . $quantidade_paginas .
             /*TODO-2: Adicione cada variavel a consulta abaixo */
-            '  FROM livro INNER JOIN autor ON autor.autor_id = livro.autor;';
+            '  FROM livro INNER JOIN autor ON autor.autor_id = livro.autor_id;';
        
 
 
