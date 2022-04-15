@@ -10,7 +10,7 @@
     <div>
         <h1>Bibliófilo's</h1>
 
-        <h2>Autor</h2>
+        <h2>Donos de livros</h2>
         <?php
         require 'mysql_server.php';
 
