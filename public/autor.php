@@ -18,10 +18,11 @@
 
         $nome = 'nome';
         $nascimento = 'nascimento';
+        $quantidade_leitura = 'quantidade_leitura';
         /*TODO-1: Adicione uma variavel para cada coluna */
 
 
-        $sql = 'SELECT nome, nascimento FROM autor;';
+        $sql = 'SELECT nome, nascimento, quantidade_leitura FROM autor;';
        
 
 
@@ -36,6 +37,7 @@
         '    <tr align="left">' .
             '        <th>' . $nome . '</th>' .
             '        <th>' . $nascimento . '</th>' .
+            '        <th>' . $quantidade_leitura . '</th>' .
             '    </tr>';
 
         echo $cabecalho;
@@ -46,7 +48,8 @@
                 echo '<tr>';
 
                 echo '<td>' . $registro[$nome] . '</td>' .
-                    '<td>' . $registro[$nascimento] . '</td>' ;
+                    '<td>' . $registro[$nascimento] . '</td>' .
+                    '<td>' . $registro[$quantidade_leitura] . '</td>' ;
                 echo '</tr>';
             }
             echo '</table>';

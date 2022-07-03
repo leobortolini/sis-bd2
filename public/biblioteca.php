@@ -19,14 +19,15 @@
         $descricao = 'descricao';
         $dono = 'dono';
         $livros = 'livros';
+        $quantidade_dias = 'diasExistência';
 
 
-        $sql = 'SELECT biblioteca.nome, biblioteca.descricao, leitor.nome dono, GROUP_CONCAT(livro.nome separator \', \') livros 
+        $sql = 'SELECT biblioteca.nome, biblioteca.descricao, leitor.nome dono, biblioteca.quantidade_dias diasExistência, GROUP_CONCAT(livro.nome separator \', \') livros 
                     FROM biblioteca_livro
                         INNER JOIN biblioteca ON biblioteca.biblioteca_id = biblioteca_livro.biblioteca_id
                         INNER JOIN livro ON livro.livro_id = biblioteca_livro.livro_id
                         INNER JOIN leitor ON leitor.leitor_id = biblioteca.leitor_id
-                            GROUP BY biblioteca.nome, biblioteca.descricao, leitor.leitor_id;';
+                            GROUP BY biblioteca.nome, biblioteca.descricao, leitor.leitor_id, biblioteca.quantidade_dias;';
        
 
 
@@ -42,6 +43,7 @@
             '        <th>' . $nome . '</th>' .
             '        <th>' . $descricao . '</th>' .
             '        <th>' . $dono . '</th>' .
+            '        <th>' . $quantidade_dias . '</th>' .
             '        <th>' . $livros . '</th>' .
             '    </tr>';
 
@@ -55,6 +57,7 @@
                 echo '<td>' . $registro[$nome] . '</td>' .
                     '<td>' . $registro[$descricao] . '</td>' .
                     '<td>' . $registro[$dono] . '</td>' .
+                    '<td>' . $registro[$quantidade_dias] . '</td>' .
                     '<td>' . $registro[$livros] . '</td>';
                 echo '</tr>';
             }
